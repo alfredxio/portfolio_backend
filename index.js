@@ -39,6 +39,11 @@ app.post('/submit-form', (req, res) => {
 
 
 bot.on('message', (msg) => {
+  const userx = msg.chat.id;
+  if(userx!=chatId){
+    bot.sendMessage(userx,"You are not authorized to use this app.");
+    return;
+  }
   const repliedMessage = msg.reply_to_message;
   const message = msg.text;
   if (repliedMessage) {
